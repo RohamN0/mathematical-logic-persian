@@ -1,0 +1,86 @@
+\section*{\lr{2.3} معادل‌های منطقی}
+    \begin{definition}[تعریف \lr{2.26}]
+      فرض کنید $A_1, A_2 \in \mathscr{F}$. اگر برای همهٔ تعبیرها $\mathscr{I}$ داشته باشیم
+      \[
+      v_{\mathscr{I}}(A_1) = v_{\mathscr{I}}(A_2),
+      \]
+      آنگاه می‌گوییم $A_1$ \emph{معادل منطقی} $A_2$ است و با
+      \[
+      A_1 \equiv A_2
+      \]
+      نشان می‌دهیم.
+    \end{definition}
+      
+    \begin{example}[مثال \lr{2.27}]
+      آیا فرمول
+      \[
+      p \lor q
+      \]
+      معادل منطقی
+      \[
+      q \lor p
+      \]
+      است؟ چهار تعبیر متمایز برای اتم‌های $p$ و $q$ وجود دارد:
+      
+      \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+      \hline
+      $\mathscr{I}(p)$ & $\mathscr{I}(q)$ & $v_{\mathscr{I}}(p \lor q)$ & $v_{\mathscr{I}}(q \lor p)$ \\
+      \hline
+      $T$ & $T$ & $T$ & $T$ \\
+      $T$ & $F$ & $T$ & $T$ \\
+      $F$ & $T$ & $T$ & $T$ \\
+      $F$ & $F$ & $F$ & $F$ \\
+      \hline
+      \end{tabular}
+      \end{center}
+      
+      چون در همهٔ این تعبیرها صدق دو فرمول یکسان است، داریم:
+      \[
+      p \lor q \;\equiv\; q \lor p.
+      \]
+    \end{example}
+      
+    \begin{theorem}[قضیه \lr{2.28}]
+      برای هر $A_1, A_2 \in \mathscr{F}$،
+      \[
+      A_1 \lor A_2 \;\equiv\; A_2 \lor A_1.
+      \]
+    \end{theorem}
+      
+    \begin{proof}
+      بگذارید $\mathscr{I}$ یک تعبیر دلخواه برای $A_1 \lor A_2$ باشد. واضح است که $\mathscr{I}$ تعبیر معتبری برای $A_2 \lor A_1$ نیز هست، زیرا:
+      \[
+      \mathscr{P}_{A_1} \cup \mathscr{P}_{A_2} \;=\; \mathscr{P}_{A_2} \cup \mathscr{P}_{A_1}.
+      \]
+      
+      از آنجا که $\mathscr{P}_{A_1} \subseteq \mathscr{P}_{A_1} \cup \mathscr{P}_{A_2}$، تعبیر $\mathscr{I}$ به همهٔ اتم‌های $A_1$ مقدار می‌دهد و بنابراین تعبیر معتبری برای $A_1$ است؛ به‌طور مشابه برای $A_2$.
+      
+      اکنون داریم:
+      \[
+      v_{\mathscr{I}}(A_1 \lor A_2) = T
+      \;\Longleftrightarrow\;
+      v_{\mathscr{I}}(A_1) = T \;\lor\; v_{\mathscr{I}}(A_2) = T,
+      \]
+      و
+      \[
+      v_{\mathscr{I}}(A_2 \lor A_1) = T
+      \;\Longleftrightarrow\;
+      v_{\mathscr{I}}(A_2) = T \;\lor\; v_{\mathscr{I}}(A_1) = T.
+      \]
+      
+      اگر $v_{\mathscr{I}}(A_1) = T$، آن‌گاه
+      \[
+      v_{\mathscr{I}}(A_1 \lor A_2) = T = v_{\mathscr{I}}(A_2 \lor A_1),
+      \]
+      و همین‌طور اگر $v_{\mathscr{I}}(A_2) = T$.
+      
+      چون $\mathscr{I}$ دلخواه بود، نتیجه می‌گیریم:
+      \[
+      A_1 \lor A_2 \equiv A_2 \lor A_1.
+      \]
+    \end{proof}
+
+\input{chapters/chapter2/section2_3/subsection2_3_1}
+\input{chapters/chapter2/section2_3/subsection2_3_2}
+\input{chapters/chapter2/section2_3/subsection2_3_3}

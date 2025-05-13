@@ -1,0 +1,75 @@
+\subsection*{\lr{2.5.3} نتیجه‌ٔ منطقی \lr{(Logical Consequence)}}
+    \begin{definition}[تعریف \lr{2.48}]
+      فرض کنید $U$ مجموعه‌ای از فرمول‌ها و $A$ یک فرمول باشد. فرمول $A$ \textbf{نتیجه‌ٔ منطقی} $U$ است، اگر و تنها اگر هر \textbf{مدل} از $U$، مدل $A$ نیز باشد. این مفهوم با نماد
+      \[
+      U \models A
+      \]
+      نشان داده می‌شود.
+      
+      نیازی نیست که $A$ در \textbf{همهٔ تعبیرهای ممکن} صادق باشد، بلکه کافی است تنها در \textbf{تمام تعبیرهایی که $U$ را ارضا می‌کنند} (یعنی همهٔ فرمول‌های $U$ را درست می‌سازند) صادق باشد. اگر $U$ تهی باشد، نتیجه‌ٔ منطقی همان همگانی‌صادق بودن (validity) است.
+    \end{definition}
+    
+    \begin{example}[مثال \lr{2.49}]
+      بگذارید
+      \[
+      A = (p \lor r) \land (\neg q \lor \neg r).
+      \]
+      آنگاه
+      \[
+      \{p, \neg q\} \models A.
+      \]
+      زیرا $A$ در همهٔ تعبیرهایی که در آن‌ها $p =T$ و $q = F$ باشد، درست است. اما $A$ همگانی‌صادق نیست، زیرا در تعبیری مانند
+      \[
+      \mathscr{I}':\quad \mathscr{I}'(p) = F,\quad \mathscr{I}'(q) = T,\quad \mathscr{I}'(r) = T
+      \]
+      نادرست است.
+    \end{example}
+    
+    نکته‌ای که پیش‌تر دربارهٔ تفاوت بین $\leftrightarrow$ و $\equiv$ گفته شد، دربارهٔ $\to$ و $\models$ نیز صدق می‌کند:
+    
+    \begin{itemize}
+      \item $\to$ یک \textbf{عملگر} در زبان محتوایی منطق گزاره‌ای است،
+      \item $\models$ یک \textbf{نماد مفهومی} در زبان مدرکی (ابردستگاه) است.
+    \end{itemize}
+    
+    اما، همچون معادل منطقی، این دو مفهوم به‌هم مرتبط‌اند:
+    
+    \begin{theorem}[قضیه \lr{2.50}]
+      اگر $U = \{A_1, A_2, \dots\}$، آنگاه:
+      \[
+      U \models A \quad \text{اگر و تنها اگر} \quad \models \left(\bigwedge_i A_i\right) \to A.
+      \]
+    \end{theorem}
+    
+    \begin{definition}[تعریف \lr{2.51}]
+      عبارت
+      \[
+      \bigwedge_{i=1}^n A_i
+      \]
+      یعنی $A_1 \land A_2 \land \cdots \land A_n$. نماد $\bigwedge_i A_i$ هنگامی استفاده می‌شود که بازهٔ اندیس‌ها از متن قابل فهم باشد، یا اگر مجموعه فرمول‌ها نامتناهی باشد. برای جمع‌گزاره نیز از نماد مشابه $\bigvee_i A_i$ استفاده می‌شود.
+    \end{definition}
+    
+    \begin{example}[مثال \lr{2.52}]
+      از مثال \lr{2.49} داریم:
+      \[
+      \{p, \neg q\} \models (p \lor r) \land (\neg q \lor \neg r).
+      \]
+      پس طبق قضیه \lr{2.50}:
+      \[
+      \models (p \land \neg q) \to \bigl((p \lor r) \land (\neg q \lor \neg r)\bigr).
+      \]
+    \end{example}
+    
+    اثبات قضیهٔ \lr{2.50} و همچنین دو قضیهٔ زیر به‌عنوان تمرین باقی گذاشته شده‌اند:
+    
+    \begin{itemize}
+      \item \textbf{قضیه \lr{2.53}.} اگر $U \models A$، آنگاه برای هر فرمول $B$،
+      \[
+      U \cup \{B\} \models A.
+      \]
+    
+      \item \textbf{قضیه \lr{2.54}.} اگر $U \models A$ و فرمول $B$ همگانی‌صادق باشد، آنگاه
+      \[
+      U - \{B\} \models A.
+      \]
+    \end{itemize}

@@ -1,0 +1,28 @@
+\documentclass{report}
+
+\usepackage{xepersian, fontspec, bidi, textcomp}
+\usepackage{amsmath, mathrsfs, amssymb, amsthm}
+\usepackage{graphicx, tikz, caption, amsthm}
+\usepackage{enumerate, array}
+\usepackage{fancyhdr}
+\usetikzlibrary{shapes, positioning, arrows, fit, trees}
+
+% Fonts
+\settextfont{XB Niloofar}
+\setlength{\parindent}{0pt}
+
+% Removign numbers form defenitions
+\newtheoremstyle{mystyle}{}{}{}{}{\bfseries}{.}{ }{#1#3}
+\theoremstyle{mystyle}
+
+% Define theorem environments
+\newtheorem{definition}{}[section]
+\newtheorem{theorem}{}[section]
+\newtheorem{example}{}[section]
+\newtheorem{corollary}{}
+
+\begin{document}
+
+\input{chapters/chapter2/chapter2}
+
+\end{document}

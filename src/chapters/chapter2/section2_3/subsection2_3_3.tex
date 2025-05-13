@@ -1,0 +1,125 @@
+\subsection*{\lr{2.3.3}  فرمول‌های معادل منطقی}
+      جایگزینی فرمول‌های معادل منطقی اغلب انجام می‌شود، برای مثال در ساده‌سازی فرمول‌ها، و آشنایی با معادل‌های پرکاربرد فهرست‌شده در این زیربخش ضروری است. اثبات آن‌ها از تعاریف ابتدایی به‌دست می‌آید و به‌عنوان تمرین باقی گذاشته شده است.
+      
+      \subsubsection*{جذب ثابت‌ها \lr{(Absorption of Constants)}}
+      اجازه دهید نحو فرمول‌های بولی را طوری گسترش دهیم که دو گزارهٔ اتمی ثابت \(\text{true}\) و \(\text{false}\) را نیز شامل شود. (نمادهای دیگر: \(\top\) برای \(\text{true}\) و \(\bot\) برای \(\text{false}\).) معنای آن‌ها به صورت زیر تعریف می‌شود:
+      \[
+      \mathscr{I}(\text{true}) = T
+      \quad\text{و}\quad
+      \mathscr{I}(\text{false}) = F
+      \]
+      برای هر تعبیر \(\mathscr{I}\).  
+      این نمادها را نباید با مقادیر صدق \(T\) و \(F\) که در تعریف ارزش‌گذاری به‌کار می‌روند، اشتباه گرفت. همچنین می‌توان \(\text{true}\) و \(\text{false}\) را به‌ترتیب به‌عنوان اختصار برای فرمول‌های زیر در نظر گرفت:
+      \[
+      p \lor \neg p
+      \quad\text{و}\quad
+      p \land \neg p.
+      \]
+      وقوع یک ثابت در فرمول ممکن است آن را چنان فرو بکاهد که عملگر دودویی بی‌نیاز شود یا حتی فرمول به یک ثابت تبدیل شود:
+      \[
+      \begin{aligned}
+      A \lor \text{true} &\equiv \text{true}
+      &\quad
+      A \land \text{true} &\equiv A\\
+      A \lor \text{false} &\equiv A
+      &\quad
+      A \land \text{false} &\equiv \text{false}\\
+      A \to \text{true} &\equiv \text{true}
+      &\quad
+      \text{true} \to A &\equiv A\\
+      A \to \text{false} &\equiv \neg A
+      &\quad
+      \text{false} \to A &\equiv \text{true}\\
+      A \leftrightarrow \text{true} &\equiv A
+      &\quad
+      A \oplus \text{true} &\equiv \neg A\\
+      A \leftrightarrow \text{false} &\equiv \neg A
+      &\quad
+      A \oplus \text{false} &\equiv A
+      \end{aligned}
+      \]
+      
+      \subsubsection*{عملوندهای همسان \lr{(Identical Operands)}}
+      فروپاشی (collapse) همچنین وقتی رخ می‌دهد که هر دو عملوند یکسان باشند یا یکی نقیض دیگری:
+      \[
+      \begin{aligned}
+      A &\equiv \neg\neg A,\\
+      A &\equiv A \land A
+      &\quad
+      A &\equiv A \lor A,\\
+      A \lor \neg A &\equiv \text{true}
+      &\quad
+      A \land \neg A &\equiv \text{false},\\
+      A \to A &\equiv \text{true},\\
+      A \leftrightarrow A &\equiv \text{true}
+      &\quad
+      A \oplus A &\equiv \text{false},\\
+      \neg A &\equiv A \uparrow A
+      &\quad
+      \neg A &\equiv A \downarrow A.
+      \end{aligned}
+      \]
+      
+      \subsubsection*{جابجایی، پیمایش‌پذیری، و توزیع‌پذیری}
+      اپراتورهای دودویی بولی—به‌جز «تضمین» (\(\to\))—هم جابجایی‌پذیرند و هم پیمایش‌پذیر:
+      \[
+      \begin{aligned}
+      A \lor B &\equiv B \lor A
+      &\quad
+      A \land B &\equiv B \land A,\\
+      A \leftrightarrow B &\equiv B \leftrightarrow A
+      &\quad
+      A \oplus B &\equiv B \oplus A,\\
+      A \uparrow B &\equiv B \uparrow A
+      &\quad
+      A \downarrow B &\equiv B \downarrow A.
+      \end{aligned}
+      \]
+      با ورود نقیض، جهت یک تضمین می‌تواند وارونه شود:
+      \[
+      A \to B \;\equiv\; \neg B \to \neg A.
+      \]
+      فرمول \(\neg B \to \neg A\) را \emph{مخالف‌مقدم} (contrapositive) \(\,A \to B\) می‌نامند.
+      
+      جمع‌گزاره (\(\lor\))، ضرب‌گزاره (\(\land\))، معادل (\(\leftrightarrow\)) و نامعادل (\(\oplus\)) پیمایش‌پذیرند:
+      \[
+      \begin{aligned}
+      A \lor (B \lor C) &\equiv (A \lor B) \lor C
+      &\quad
+      A \land (B \land C) &\equiv (A \land B) \land C,\\
+      A \leftrightarrow (B \leftrightarrow C) &\equiv (A \leftrightarrow B) \leftrightarrow C
+      &\quad
+      A \oplus (B \oplus C) &\equiv (A \oplus B) \oplus C.
+      \end{aligned}
+      \]
+      ولی تضمین (\(\to\))، nor (\(\downarrow\)) و nand (\(\uparrow\)) پیمایش‌پذیر نیستند.
+      
+      همچنین، جمع‌گزاره و ضرب‌گزاره بر یکدیگر توزیع‌پذیرند:
+      \[
+      \begin{aligned}
+      A \lor (B \land C) &\equiv (A \lor B) \land (A \lor C),\\
+      A \land (B \lor C) &\equiv (A \land B) \lor (A \land C).
+      \end{aligned}
+      \]
+      
+      \subsubsection*{تعریف یک عملگر به‌واسطهٔ عملگر دیگر}
+      در اثبات قضایا با استقرا ساختاری، گام استقرایی باید برای هر عملگر دودویی جداگانه انجام شود. این گام‌ها ساده‌تر می‌شوند اگر بتوان عملگرهای خاص را با جایگزینی زیرفرمول‌هایی حذف کرد و فقط از مجموعه‌ای از عملگرهای پایه بهره گرفت. مثلاً معادل (\(\leftrightarrow\)) را می‌توان با ترکیب تضمین و ضرب‌گزاره تعریف کرد.
+      
+      همچنین، برخی الگوریتم‌ها برای تبدیل فرمول به شکل نرمال، نیازمند حذف برخی عملگرها هستند. فهرست معادل‌هایی که برای این کار کاربرد دارند:
+      \[
+      \begin{aligned}
+      A \leftrightarrow B &\equiv (A \to B) \land (B \to A)
+      &\quad
+      A \oplus B &\equiv \neg(A \to B) \lor \neg(B \to A),\\
+      A \to B &\equiv \neg A \lor B
+      &\quad
+      A \to B &\equiv \neg(A \land \neg B),\\
+      A \lor B &\equiv \neg(\neg A \land \neg B)
+      &\quad
+      A \land B &\equiv \neg(\neg A \lor \neg B),\\
+      A \lor B &\equiv \neg A \to B
+      &\quad
+      A \land B &\equiv \neg(A \to \neg B).
+      \end{aligned}
+      \]
+      تعریف ضرب‌گزاره برحسب جمع‌گزاره و نقیض و بالعکس را \emph{قضایای دمورگان} \lr{(De Morgan’s laws)} می‌نامند.

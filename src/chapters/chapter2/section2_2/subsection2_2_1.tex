@@ -1,0 +1,55 @@
+\subsection*{\lr{2.2.1} تعریف یک تعبیر}
+  \begin{definition}[تعریف \lr{2.15}]
+    فرض کنید $A\in \mathscr{F}$ یک فرمول باشد و $\mathscr{P}_{A}$ مجموعهٔ اتم‌های ظاهرشده در $A$ باشد.  
+    یک تعبیر برای $A$، تابع کلی  
+    \[
+    \mathscr{I}_{A} : \mathscr{P}_{A} \;\longrightarrow\; \{T, F\}
+    \]
+    است که به هر اتم در $\mathscr{P}_{A}$ یکی از مقادیر صدق $T$ (درست) یا $F$ (نادرست) اختصاص می‌دهد.
+  \end{definition}
+  \begin{definition}[تعریف \lr{2.16}]
+    اگر $\mathscr{I}_{A}$ یک تعبیر برای $A\in \mathscr{F}$ باشد، مقدار صدق $A$ تحت $\mathscr{I}_{A}$، که با
+    \[
+    v_{\mathscr{I}_{A}}(A)
+    \]
+    نشان داده می‌شود، به صورت بازگشتی بر اساس ساختار $A$ و مطابق شکل ۲.۳ تعریف می‌شود.
+    در عمل، وقتی زمینه مشخص باشد، از خلاصهٔ $\mathscr{I}$ به جای $\mathscr{I}_{A}$ استفاده می‌کنیم و مقدار صدق را به صورت $v_{\mathscr{I}}(A)$ می‌نویسیم.
+  \end{definition}
+  \begin{example}[مثال \lr{2.17}]
+    فرض کنید
+    \[
+    A \;=\; (p \rightarrow q) \;\leftrightarrow\; (\neg q \rightarrow \neg p)
+    \]
+    و تعبیر زیر را برای آن در نظر بگیریم:
+    \[
+    \mathscr{I}_{A}(p)=F,\quad \mathscr{I}_{A}(q)=T.
+    \]
+    آنگاه مقدار صدق $A$ تحت $\mathscr{I}$ با استفاده از قواعد ارزیابی (شکل ۲.۳) چنین خواهد بود:
+    \begin{align*}
+    v_{\mathscr{I}}(p) &= \mathscr{I}_{A}(p) = F,\\
+    v_{\mathscr{I}}(q) &= \mathscr{I}_{A}(q) = T,\\
+    v_{\mathscr{I}}(p\rightarrow q) &= T,\\
+    v_{\mathscr{I}}(\neg q) &= F,\\
+    v_{\mathscr{I}}(\neg p) &= T,\\
+    v_{\mathscr{I}}(\neg q \rightarrow \neg p) &= T,\\
+    v_{\mathscr{I}}\bigl((p\rightarrow q)\leftrightarrow(\neg q\rightarrow \neg p)\bigr) &= T.
+    \end{align*}
+  \end{example}
+  \subsection*{تعبیرهای جزئی}
+    \begin{definition}[تعریف \lr{2.18}]
+      فرض کنید $A\in \mathscr{F}$ یک فرمول در منطق گزاره‌ای باشد و $\mathscr{P}_{A}$ مجموعهٔ اتم‌های ظاهرشده در $A$ باشد.  
+      یک «تعبیر جزئی» برای $A$، تابع جزئی  
+      \[
+      \mathscr{I}_{A} : \mathscr{P}_{A} \rightharpoonup \{T, F\}
+      \]
+      است که به برخی (نه لزوماً همه)ٔ اتم‌های $\mathscr{P}_{A}$ ارزش $T$ یا $F$ تخصیص می‌دهد.
+      ممکن است در یک تعبیر جزئی، بدون این‌که به همهٔ اتم‌ها مقدار داده باشیم، بتوان ارزش صدق فرمول $A$ را مشخص کرد.
+    \end{definition}
+    \begin{example}[مثال \lr{2.19}]
+      فرمول
+      \[
+      A = p \land q
+      \]
+      را در نظر بگیرید. یک تعبیر جزئی را در نظر بگیرید که تنها به $p$ مقدار $F$ می‌دهد. روشن است که در این تعبیر جزئی، ارزش صدق $A$ برابر $F$ خواهد بود، زیرا $p \land q$ تنها زمانی $T$ است که هر دو $p$ و $q$ برابر $T$ باشند.
+      اگر همین تعبیر جزئی به $p$ مقدار $T$ می‌داد ولی به $q$ مقداری تخصیص نمی‌داد، آنگاه ارزش صدق $A$ قابل تعیین نبود.
+    \end{example}

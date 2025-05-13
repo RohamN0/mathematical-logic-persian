@@ -1,0 +1,132 @@
+\subsection*{\lr{2.1.6} \quad دستور زبان صوری برای فرمول ها}
+  (این زیر‌بخش مستلزم آشنایی با دستور زبان‌های صوری است.)
+  به‌جای تعریف فرمول‌ها به‌صورت درختی، می‌توان آن‌ها را به‌شکل رشته‌هایی تعریف کرد که از یک دستور زبان مستقل از متن (\lr{context-free grammar}) تولید می‌شوند.
+  \begin{definition}[تعریف \lr{2.13}]
+    فرمول‌های منطق گزاره‌ای از دستور زبانی مستقل از متن تولید می‌شوند که نمادهای پایانی (\lr{terminal symbols}) آن به‌صورت زیر تعریف شده‌اند:
+    \begin{itemize}
+      \item مجموعه‌ای نامتناهی از نمادها به‌نام گزاره‌های اتمی \lr{$\mathcal{P}$}
+      \item عملگرهای بولی مطابق با تعریف \lr{2.1}
+    \end{itemize}
+    قواعد تولید (\lr{production rules}) این دستور زبان به‌صورت زیر هستند:
+    \begin{align*}
+      \text{fml} &::= p \qquad \text{برای هر } p \in \mathcal{P} \\
+      \text{fml} &::= \neg \text{ fml} \\
+      \text{fml} &::= \text{fml op fml} \\
+      \text{op} &::= \lor \mid \land \mid \rightarrow \mid \leftrightarrow \mid \oplus \mid \uparrow \mid \downarrow
+    \end{align*}
+    یک فرمول، رشته‌ای است که می‌توان آن را از نماد غیرپایانی \lr{fml} استخراج کرد. مجموعه‌ی تمام فرمول‌هایی که از این دستور زبان به‌دست می‌آیند با نماد $\mathscr{F}$ نمایش داده می‌شود.
+    فرآیند تولید (اشتقاق) رشته‌ها در یک دستور زبان صوری را می‌توان با درخت‌های اشتقاق \\ (\lr{derivation trees}) نمایش داد . رشته‌ی نهایی را می‌توان از طریق خواندن برگ‌ها از چپ به راست به‌دست آورد.
+  \end{definition}
+  \begin{example}[مثال \lr{2.14}]
+    در ادامه، فرآیند اشتقاق فرمول زیر در منطق گزاره‌ای نشان داده شده است:
+    \[
+    p \rightarrow q \leftrightarrow \neg p \rightarrow \neg q
+    \]
+    \begin{figure}[ht]
+    \centering
+    \begin{latin}
+    \resizebox{0.7\textwidth}{!}{%
+    \begin{tikzpicture}[
+      level distance=1.5cm,
+      sibling distance=4cm,
+      level 2/.style={sibling distance=2cm},
+      level 3/.style={sibling distance=1cm},
+      edge from parent path={(\tikzparentnode.south) -- (\tikzchildnode.north)}
+    ]
+    \node {fml}
+      child { 
+        node {fml}
+        child { 
+        	node {fml}
+        	child {node {$p$}}
+        }
+        child {
+        	node {op}
+        	child {node {$\Rightarrow$}}
+        }
+        child { 
+        	node {fml} 
+        	child {node {$q$}}
+        }
+      }
+      child { 
+        node {op}
+        child {node {$\Leftrightarrow$}}
+        child { 
+          node {fml}
+          child { 
+            node {fml}
+            child {node {$\neg$}}
+            child {node {fml}
+              child {node {$p$}}
+            }
+          }
+          child {
+            node {op}
+            child {node {$\Rightarrow$}}
+          }
+          child { 
+            node {fml}
+            child {node {$\neg$}}
+            child {node {fml}
+              child {node {$q$}}
+            }
+          }
+        }
+      };
+    \end{tikzpicture}
+    }
+    \end{latin}
+    \renewcommand{\thefigure}{\lr{2.2}}
+    \caption{اشتقاق درخت برای $p \rightarrow q \leftrightarrow \neg p \rightarrow \neg q$ }
+    \end{figure}
+    درخت مربوطه در شکل \lr{2.2} آمده است. گام‌های اشتقاق به‌صورت زیر هستند:
+    \begin{align*}
+      1.\quad & \text{fml} \\
+      2.\quad & \text{fml op fml} \\
+      3.\quad & \text{fml} \leftrightarrow \text{fml} \\
+      4.\quad & \text{fml} \rightarrow \text{fml} \leftrightarrow \text{fml} \\
+      5.\quad & p \rightarrow \text{fml} \leftrightarrow \text{fml} \\
+      6.\quad & p \rightarrow q \leftrightarrow \text{fml} \\
+      7.\quad & p \rightarrow q \leftrightarrow \text{fml} \rightarrow \text{fml} \\
+      8.\quad & p \rightarrow q \leftrightarrow \neg \text{fml} \rightarrow \text{fml} \\
+      9.\quad & p \rightarrow q \leftrightarrow \neg p \rightarrow \text{fml} \\
+      10.\quad & p \rightarrow q \leftrightarrow \neg p \rightarrow \neg \text{fml} \\
+      11.\quad & p \rightarrow q \leftrightarrow \neg p \rightarrow \neg q
+    \end{align*}
+  \end{example}
+  روش‌هایی که در بخش \lr{2.1.2} برای رفع ابهام معرفی شدند، در اینجا نیز قابل‌استفاده هستند.
+  همچنین می‌توان دستور زبان را طوری بازنویسی کرد که پرانتزها را به‌صورت درونی دربر گیرد:
+  \begin{align*}
+    \text{fml} &::= (\neg \text{fml}) \\
+    \text{fml} &::= (\text{fml op fml})
+  \end{align*}
+  و سپس با تعریف قواعد اولویت، می‌توان تعداد پرانتزها را کاهش داد.
+  
+  \begin{figure}[ht]
+  \centering
+    \begin{RTL}
+      \begin{tabbing}
+      \hspace{6.5cm} \= \kill
+        $v_{\mathscr{I}}(A) = \mathscr{I}_A(A)$ \> اگر $A$ یک اتم باشد \\
+        $v_{\mathscr{I}}(\neg A) = T$ \> اگر $v_{\mathscr{I}}(A) = F$ \\
+        $v_{\mathscr{I}}(\neg A) = F$ \> اگر $v_{\mathscr{I}}(A) = T$ \\
+        $v_{\mathscr{I}}(A_1 \lor A_2) = F$ \> اگر $v_{\mathscr{I}}(A_1) = F$ و $v_{\mathscr{I}}(A_2) = F$ \\
+        $v_{\mathscr{I}}(A_1 \lor A_2) = T$ \> در غیر این صورت \\
+        $v_{\mathscr{I}}(A_1 \land A_2) = T$ \> اگر $v_{\mathscr{I}}(A_1) = T$ و $v_{\mathscr{I}}(A_2) = T$ \\
+        $v_{\mathscr{I}}(A_1 \land A_2) = F$ \> در غیر این صورت \\
+        $v_{\mathscr{I}}(A_1 \rightarrow A_2) = F$ \> اگر $v_{\mathscr{I}}(A_1) = T$ و $v_{\mathscr{I}}(A_2) = F$ \\
+        $v_{\mathscr{I}}(A_1 \rightarrow A_2) = T$ \> در غیر این صورت \\
+        $v_{\mathscr{I}}(A_1 \uparrow A_2) = F$ \> اگر $v_{\mathscr{I}}(A_1) = T$ و $v_{\mathscr{I}}(A_2) = T$ \\
+        $v_{\mathscr{I}}(A_1 \uparrow A_2) = T$ \> در غیر این صورت \\
+        $v_{\mathscr{I}}(A_1 \downarrow A_2) = T$ \> اگر $v_{\mathscr{I}}(A_1) = F$ و $v_{\mathscr{I}}(A_2) = F$ \\
+        $v_{\mathscr{I}}(A_1 \downarrow A_2) = F$ \> در غیر این صورت \\
+        $v_{\mathscr{I}}(A_1 \leftrightarrow A_2) = T$ \> اگر $v_{\mathscr{I}}(A_1) = v_{\mathscr{I}}(A_2)$ \\
+        $v_{\mathscr{I}}(A_1 \leftrightarrow A_2) = F$ \> اگر $v_{\mathscr{I}}(A_1) \ne v_{\mathscr{I}}(A_2)$ \\
+        $v_{\mathscr{I}}(A_1 \oplus A_2) = T$ \> اگر $v_{\mathscr{I}}(A_1) \ne v_{\mathscr{I}}(A_2)$ \\
+        $v_{\mathscr{I}}(A_1 \oplus A_2) = F$ \> اگر $v_{\mathscr{I}}(A_1) = v_{\mathscr{I}}(A_2)$ \\
+      \end{tabbing}
+    \end{RTL}
+    \renewcommand{\thefigure}{\lr{2.3}}
+    \caption{مقادیر منطقی فرمول‌ها}
+  \end{figure}

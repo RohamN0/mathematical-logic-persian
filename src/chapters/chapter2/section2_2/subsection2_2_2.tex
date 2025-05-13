@@ -1,0 +1,72 @@
+\subsection*{\lr{2.2.2} جداول ارزش}
+    \begin{definition}[تعریف \lr{2.20}]
+      فرض کنید $A\in \mathscr{F}$ و مجموعهٔ اتم‌های ظاهرشده در $A$، $\mathscr{P}_{A}$، شامل $n$ اتم باشد.  
+      یک «جدول ارزش» برای $A$ جدولی است با $n+1$ ستون و $2^{n}$ سطر.  
+      ستون‌های اول (تعداد $n$) هر یک یک اتم از $\mathscr{P}_{A}$ را نشان می‌دهند و تمام ترکیب‌های ممکنِ انتساب $T$ یا $F$ به آن‌ها را فهرست می‌کنند (هر سطر یک تعبیر $\mathscr{I}$ را مشخص می‌کند).  
+      ستون آخر، ارزش صدق $A$، یعنی $v_{\mathscr{I}}(A)$، را در هر تعبیر $\mathscr{I}$ نمایش می‌دهد.
+    \end{definition}
+    \begin{example}[مثال \lr{2.21}]
+      جدول ارزش فرمول
+      \[
+      p \;\rightarrow\; q
+      \]
+      به صورت زیر است:
+      \[
+      \begin{array}{c c c}
+      p & q & p \!\rightarrow\! q\\
+      \hline
+      T & T & T\\
+      T & F & F\\
+      F & T & T\\
+      F & F & T
+      \end{array}
+      \]
+    \end{example}
+    \begin{example}[مثال \lr{2.22}]
+      برای فرمول
+      \[
+      (p\rightarrow q)\;\leftrightarrow\;(\neg q\rightarrow\neg p)
+      \]
+      ستون‌های میانی ارزش زیرفرمول‌ها را نیز نمایش می‌دهیم:
+      \[
+      \begin{array}{c c c c c c c}
+      p & q & p\!\rightarrow\!q & \neg p & \neg q & \neg q\!\rightarrow\!\neg p & (p\!\rightarrow\!q)\!\leftrightarrow\!(\neg q\!\rightarrow\!\neg p)\\
+      \hline
+      T & T & T & F & F & T & T\\
+      T & F & F & F & T & F & T\\
+      F & T & T & T & F & T & T\\
+      F & F & T & T & T & T & T
+      \end{array}
+      \]
+    \end{example}
+    \begin{example}[مثال \lr{2.23}]
+      برای تعبیر \(\mathscr{I}\) با \(\mathscr{I}(p)=T\) و \(\mathscr{I}(q)=F\)، مراحل گام‌به‌گام محاسبهٔ ارزش صدق
+      \[
+      (p\to q)\;\leftrightarrow\;(\neg q\to\neg p)
+      \]
+      را می‌توان به صورت زیر در یک جدول نمایش داد. در هر سطر یک مقدار جدید از زیرفرمول اضافه می‌شود:
+      
+      \[
+      \begin{array}{c c c c c c c c c}
+      (p & \rightarrow & q) & \leftrightarrow & (\neg & q & \rightarrow & \neg & p)\\
+      \hline
+      T &   & F &     &     & F   &    &  T  \\
+      T &   & F &     &     & F   &    &  T  \\
+      T &   & F &     & F   & F   & F  &  T  \\
+      T &   & F &     & F   & F   & F  &  T  \\
+      T & F & F &     & F   & F   & F  &  T  \\
+      T & F & F & T   & F   & F   & F  &  T  \\
+      \end{array}
+      \]
+      اگر همهٔ زیرفرمول‌ها یک‌جا در یک سطر قرار گیرند، همان جدول کامل مثال \lr{2.22} حاصل می‌شود:
+      \[
+      \begin{array}{c c c c c c c}
+      p & q & p\!\to\!q & \neg p & \neg q & \neg q\!\to\!\neg p & (p\!\to\!q)\!\leftrightarrow\!(\neg q\!\to\!\neg p)\\
+      \hline
+      T & T & T & F & F & T & T\\
+      T & F & F & F & T & F & T\\
+      F & T & T & T & F & T & T\\
+      F & F & T & T & T & T & T
+      \end{array}
+      \]
+    \end{example}

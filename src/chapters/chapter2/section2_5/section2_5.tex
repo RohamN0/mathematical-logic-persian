@@ -1,0 +1,94 @@
+\section*{\lr{2.5} \lr{Satisfiability, Validity and Consequence}}
+
+    ما اکنون مفاهیم بنیادین معناشناسی (سمانتیک) فرمول‌ها را تعریف می‌کنیم:
+
+    \begin{definition}[تعریف \lr{2.38}]
+      فرض کنید $A \in \mathscr{F}$.
+      \begin{itemize}
+        \item $A$ \emph{قابل ارضا} (satisfiable) است اگر و تنها اگر برای برخی تعبیر $\mathscr{I}$ داشته باشیم
+          \[
+            v_{\mathscr{I}}(A) = T.
+          \]
+          تعبیر $\mathscr{I}$ که فرمول $A$ را ارضا می‌کند، \emph{مدل} $A$ نامیده می‌شود.
+        \item $A$ \emph{صادق همگانی} (valid)، که با $\models A$ نشان داده می‌شود، است اگر و تنها اگر برای همهٔ تعبیرها $\mathscr{I}$ داشته باشیم
+          \[
+            v_{\mathscr{I}}(A) = T.
+          \]
+          یک فرمول صادق همگانی در منطق گزاره‌ای را \emph{تناقض‌ناپذیر} یا \emph{تاتولوژی} نیز می‌نامند.
+        \item $A$ \emph{ناقابل ارضا} (unsatisfiable) است اگر قابل ارضا نباشد، یعنی اگر برای همهٔ تعبیرها $\mathscr{I}$ داشته باشیم
+          \[
+            v_{\mathscr{I}}(A) = F.
+          \]
+        \item $A$ \emph{قابل تکذیب} (falsifiable)، که با $\not\models A$ نشان داده می‌شود، است اگر ناصادق همگانی باشد، یعنی اگر برای برخی تعبیر $\mathscr{I}$ داشته باشیم
+          \[
+            v_{\mathscr{I}}(A) = F.
+          \]
+      \end{itemize}
+      این چهار مفهوم معناشناختی در شکل \lr{2.6} نشان داده شده‌اند.
+    \end{definition}
+
+    این مفاهیم به‌طور نزدیکی با یکدیگر مرتبط‌اند:
+
+    \begin{theorem}[قضیه \lr{2.39}]
+      برای هر $A \in \mathscr{F}$:
+      \begin{enumerate}
+        \item $A$ صادق همگانی است \emph{اگر و تنها اگر} $\neg A$ ناقابل ارضا باشد.
+        \item $A$ قابل ارضا است \emph{اگر و تنها اگر} $\neg A$ قابل تکذیب باشد.
+      \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+      بگذارید $\mathscr{I}$ یک تعبیر دلخواه باشد. از تعریف ارزش صدق نقیض، داریم
+      \[
+        v_{\mathscr{I}}(A) =T
+        \;\Longleftrightarrow\;
+        v_{\mathscr{I}}(\neg A) = F.
+      \]
+      از آنجا که $\mathscr{I}$ دلخواه بود، نتیجه می‌شود $A$ در همهٔ تعبیرها درست است اگر و تنها اگر $\neg A$ در همهٔ تعبیرها نادرست باشد، یعنی $\neg A$ ناقابل ارضا باشد.
+      
+      اگر $A$ قابل ارضا باشد، آنگاه برای برخی تعبیر $\mathscr{I}$ داریم $v_{\mathscr{I}}(A)=T$. با تعریف نقیض،\\ $v_{\mathscr{I}}(\neg A)=F$، پس $\neg A$ قابل تکذیب است. بالعکس اگر $v_{\mathscr{I}}(\neg A)=F$ برای برخی $\mathscr{I}$، آنگاه $v_{\mathscr{I}}(A)=T$، یعنی $A$ قابل ارضا است.
+    \end{proof}
+
+    \begin{figure}[ht]
+      \centering
+      \begin{latin}
+        \begin{tikzpicture}
+          % Define the two main regions first
+          % Adjust minimum width/height and relative positioning for better fit
+          \node (right_region) [draw, rounded corners=5pt, minimum width=5.5cm, minimum height=3.5cm, label={[text centered, text width=4cm]center:False in all interpretations.}] {};
+          \node (left_region) [draw, rounded corners=5pt, minimum width=7.5cm, minimum height=3.5cm, left=0.2cm of right_region.west, anchor=east] {}; % Added label here
+          \node [below=-1.5cm] at (left_region.south) {True in some interpretations; false in others.};
+      
+          % Draw the outer boundary using 'fit' to enclose the two regions
+          \node (outer) [draw, rounded corners=5pt, fit=(left_region) (right_region)] {};
+      
+          % Inner node for "True in all interpretations"
+          % Position it within the left region and adjust size
+          \node (inner_true_all) [draw, rounded corners=2pt, minimum width=4.2cm, minimum height=1.5cm, below=0.3cm of left_region.north, anchor=north] {};
+          \node [text centered] at (inner_true_all.center) {True in all interpretations.};
+      
+          % Add the vertical line between the two main regions, aligned with the outer box
+          \draw (left_region.east |- outer.north) -- (left_region.east |- outer.south);
+      
+          % Labels at the bottom - adjust spacing
+          \node (valid) [below=2.5cm of inner_true_all.south west] {Valid};
+          \node (satisfiable) [right=1.8cm of valid.east] {Satisfiable};
+          \node (falsifiable) [right=1.8cm of satisfiable.east] {Falsifiable};
+          \node (unsatisfiable) [right=1.8cm of falsifiable.east] {Unsatisfiable};
+      
+          % Arrows - adjust start and end points
+          \draw [->] (valid.north) -- (inner_true_all.south west);
+          \draw [->] (satisfiable.north) -- (inner_true_all.south);
+          \draw [->] (falsifiable.north) -- ([yshift=-0.2cm]left_region.south east); % Pointing slightly above the corner
+          \draw [->] (unsatisfiable.north) -- (right_region.south);
+      
+        \end{tikzpicture}
+      \end{latin}
+      \renewcommand{\thefigure}{\lr{2.6}}
+      \caption{Satisfiability and validity of formulas}
+      \end{figure}
+
+\input{chapters/chapter2/section2_5/subsection2_5_1}
+\input{chapters/chapter2/section2_5/subsection2_5_2}
+\input{chapters/chapter2/section2_5/subsection2_5_3}
+\input{chapters/chapter2/section2_5/subsection2_5_4}

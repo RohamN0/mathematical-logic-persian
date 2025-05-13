@@ -1,0 +1,95 @@
+\subsection*{\lr{2.3.2} جایگزینی}
+      معادل منطقی توجیه‌کنندهٔ جایگزینی یک فرمول به‌جای فرمول دیگری است.
+      
+      \begin{definition}[تعریف \lr{2.30}]
+        اگر $A$ زیردرختی از فرمول $B$ باشد، آنگاه می‌گوییم $A$ یک \emph{زیرفرمول} از $B$ است. اگر $A$ دقیقاً با $B$ یکسان نباشد، آن را \emph{زیرفرمول درست} $B$ می‌نامیم.
+      \end{definition}
+      
+      \begin{example}[مثال \lr{2.31}]
+        شکل \lr{2.4} فرمول
+        \[
+        (p \to q) \;\leftrightarrow\; (\neg p \to \neg q)
+        \]
+        (فرمول سمت چپ شکل \lr{2.1}) و زیرفرمول‌های درست آن را نشان می‌دهد.
+        اگر به‌صورت رشته نمایش داده شود، زیرفرمول‌های درست عبارتند از:
+        \[
+        p \to q,\quad \neg p \to \neg q,\quad \neg p,\quad \neg q,\quad p,\quad q.
+        \]
+      \end{example}
+      
+      \begin{definition}[تعریف \lr{2.32}]
+        فرض کنید $A$ یک زیرفرمول از $B$ باشد و $A'$ هر فرمول دلخواهی باشد.
+        $B\{A \leftarrow A'\}$ یعنی جایگزینی $A'$ به‌جای $A$ در $B$، فرمولی است که از $B$ به‌دست می‌آید وقتی همهٔ زیردرخت‌های متناظر با $A$ در $B$ با $A'$ جایگزین شوند.
+      \end{definition}
+      
+      \begin{example}[مثال \lr{2.33}]
+        بگذارید
+        \[
+        B = (p \to q) \leftrightarrow (\neg p \to \neg q),\quad
+        A = p \to q,\quad
+        A' = \neg p \lor q.
+        \]
+        آنگاه
+        \[
+        B\{A \leftarrow A'\}
+        \;=\;
+        (\neg p \lor q) \;\leftrightarrow\; (\neg q \to \neg p).
+        \]
+      \end{example}
+      
+      اگر در فرمول $B$، یک زیرفرمول $A$ با فرمولی که معادل منطقی $A$ است جایگزین شود، ارزش‌گذاری $B$ در هیچ تعبیر تغییر نمی‌کند.
+      
+      \begin{theorem}[قضیه \lr{2.34}]
+        فرض کنید $A$ زیرفرمولی از $B$ باشد و $A'$ فرمولی باشد که $A \equiv A'$. آنگاه
+        \[
+        B \;\equiv\; B\{A \leftarrow A'\}.
+        \]
+      \end{theorem}
+      
+      \begin{proof}
+        بگذارید $\mathscr{I}$ یک تعبیر دلخواه باشد. چون $A \equiv A'$، پس:
+        \[
+        v_{\mathscr{I}}(A) = v_{\mathscr{I}}(A').
+        \]
+        باید نشان دهیم:
+        \[
+        v_{\mathscr{I}}(B)
+        =
+        v_{\mathscr{I}}\bigl(B\{A \leftarrow A'\}\bigr).
+        \]
+        اثبات با استقرا بر عمق $d$ بالاترین وقوع زیردرخت $A$ در $B$ انجام می‌شود:
+        
+        \begin{itemize}
+          \item \textbf{حالت پایه} ($d = 0$):  
+            در این حالت، تنها یک وقوع از $A$ وجود دارد که همان خود $B$ است. پس:
+            \[
+            v_{\mathscr{I}}(B)
+            = v_{\mathscr{I}}(A)
+            = v_{\mathscr{I}}(A')
+            = v_{\mathscr{I}}\bigl(B\{A \leftarrow A'\}\bigr).
+            \]
+          \item \textbf{گام استقرا} ($d > 0$):  
+            در این حالت، $B$ یکی از دو صورت زیر است:
+            \begin{enumerate}
+              \item $B = \neg B_1$,
+              \item $B = B_1\;\mathrm{op}\;B_2$ برای برخی فرمول‌های $B_1, B_2$ و یک عملگر بولی $\mathrm{op}$.
+            \end{enumerate}
+            در هر دو صورت، عمق $A$ در زیردرخت‌های $B_1$ و $B_2$ کمتر از $d$ است. بنابراین، بر اساس فرض استقرا:
+            \[
+            v_{\mathscr{I}}(B_1)
+            = v_{\mathscr{I}}\bigl(B_1\{A \leftarrow A'\}\bigr),
+            \quad
+            v_{\mathscr{I}}(B_2)
+            = v_{\mathscr{I}}\bigl(B_2\{A \leftarrow A'\}\bigr).
+            \]
+            پس بر اساس تعریف ارزش‌گذاری برای عملگرهای بولی:
+            \[
+            v_{\mathscr{I}}(B)
+            = v_{\mathscr{I}}\bigl(B\{A \leftarrow A'\}\bigr).
+            \]
+        \end{itemize}
+        در نتیجه، از آنجا که $\mathscr{I}$ دلخواه بود داریم:
+        \[
+        B \equiv B\{A \leftarrow A'\}.
+        \]
+      \end{proof}

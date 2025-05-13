@@ -1,0 +1,44 @@
+\subsection*{\lr{2.2.4} تعبیری برای یک مجموعه از فرمول‌ها}
+      \begin{definition}[تعریف \lr{2.24}]
+        فرض کنید
+        \[
+        S = \{A_1, A_2, \dots\}
+        \]
+        مجموعه‌ای از فرمول‌ها باشد و بگذارید
+        \[
+        \mathscr{P}_S = \bigcup_i \mathscr{P}_{A_i}
+        \]
+        که $\mathscr{P}_S$ مجموعهٔ تمام اتم‌هایی است که در فرمول‌های $S$ ظاهر می‌شوند.
+        
+        یک \emph{تعبیر برای $S$} تابعی است به صورت:
+        \[
+        \mathscr{I}_S : \mathscr{P}_S \to \{T, F\}.
+        \]
+        
+        برای هر $A_i \in S$، مقدار صدق $v_{\mathscr{I}_S}(A_i)$ (یعنی ارزش صدق $A_i$ تحت تعبیر $\mathscr{I}_S$) دقیقاً همانند تعریف \lr{2.16} تعیین می‌شود.
+        
+        تعریف $\mathscr{P}_S$ به‌صورت اجتماع مجموعه‌های اتم‌ها در فرمول‌های $S$ تضمین می‌کند که به هر اتم دقیقاً یک مقدار «درست» یا «غلط» اختصاص یابد.
+      \end{definition}
+        
+      \begin{example}[مثال \lr{2.25}]
+        فرض کنید
+        \[
+        S = \left\{\, p \rightarrow q,\; p,\; q \land r,\; p \lor s \leftrightarrow s \land q \,\right\}
+        \]
+        و تعبیر $\mathscr{I}_S$ چنان است که
+        \[
+        \mathscr{I}_S(p) = T, \quad \mathscr{I}_S(q) = F, \quad \mathscr{I}_S(r) = T, \quad \mathscr{I}_S(s) = T.
+        \]
+        
+        آنگاه مقادیر صدق اعضای $S$ به‌صورت زیر محاسبه می‌شوند:
+        \[
+        \begin{aligned}
+        v_{\mathscr{I}_S}(p \rightarrow q) &= F, \\
+        v_{\mathscr{I}_S}(p)               &= \mathscr{I}_S(p) = T, \\
+        v_{\mathscr{I}_S}(q \land r)       &= F, \\
+        v_{\mathscr{I}_S}(p \lor s)        &= T, \\
+        v_{\mathscr{I}_S}(s \land q)       &= F, \\
+        v_{\mathscr{I}_S}(p \lor s \leftrightarrow s \land q) &= F.
+        \end{aligned}
+        \]
+      \end{example}
